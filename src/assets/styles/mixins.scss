@@ -1,0 +1,9 @@
+@mixin flexRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+@mixin  flexColumn {
+    display: flex;
+    flex-direction: column;
+}
