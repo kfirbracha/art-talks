@@ -1,0 +1,20 @@
+<mat-form-field class="example-full-width" appearance="outline">
+  <mat-label>quick search</mat-label>
+  <input matInput [(ngModel)]="keywords" />
+</mat-form-field>
+
+<div class="container">
+  <app-base-card
+    class="card"
+    (click)="onCardClick(a)"
+    *ngFor="let a of arr | filter: keywords"
+  >
+    <app-material-card
+      [imageDesc]="a.imageDesc"
+      [artist]="a.artist"
+      [imageName]="a.imageName"
+      [imageUrl]="a.url"
+    >
+    </app-material-card>
+  </app-base-card>
+</div>

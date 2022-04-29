@@ -1,0 +1,29 @@
+@import '~src/assets/styles/style.scss';
+:host{
+    .container{
+        @include flexRow;
+        justify-content: space-around;
+        .image{
+            width: 70%;
+        }
+        .chat-container{
+            @include flexColumn;
+            width: 29%;
+            border:1px solid black;
+            border-radius: 4px;
+            .chat-view{
+                height: 96%;
+
+            }
+        }
+    }
+
+    ::ng-deep .mat-form-field-wrapper{
+        padding-bottom: 0;
+        margin:0;
+    }
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper{
+        margin: 0;
+    }
+
+}

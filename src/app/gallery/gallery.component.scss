@@ -1,0 +1,28 @@
+@import '~src/assets/styles/style.scss';
+
+:host{
+    color: $blue-color;
+    ::ng-deep .mat-form-field{
+        display: flex;
+        padding: 20px 20px 0 20px;
+        &>:first-child{
+            width: 100%
+        }
+    }
+    .container{
+        @include flexRow;
+       display: flex;
+       justify-content: space-around;
+        &>*{
+            flex: 1;
+            max-width: 30%;
+            max-height: 40%;
+            box-shadow: $box-shadow;
+            
+            
+        }
+        .card{
+            cursor: pointer;
+        }
+    }
+}
