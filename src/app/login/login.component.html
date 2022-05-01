@@ -1,0 +1,41 @@
+<div class="container">
+  <app-base-card>
+    <h1 class="title">{{ title }}</h1>
+    <form [formGroup]="loginForm" class="form" (ngSubmit)="submitForm()">
+      <mat-form-field appearance="outline">
+        <mat-label>User Name</mat-label>
+        <input matInput formControlName="userName" />
+        <mat-error *ngIf="loginForm.get('userName')?.invalid">
+          *required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" />
+        <mat-error *ngIf="loginForm.get('password')?.invalid">
+          *required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-slide-toggle
+        (toggleChange)="onToggle($event)"
+        matInput
+        formControlName="isLogin"
+      >
+        {{ toggleSlider }}
+      </mat-slide-toggle>
+
+      <button
+        class="submit-button"
+        type="submit"
+        mat-raised-button
+        color="primary"
+      >
+        send
+      </button>
+    </form>
+    <h2 *ngIf="loginError" class="login-error">
+      one or more of the details are not correct ,try again
+    </h2>
+  </app-base-card>
+</div>

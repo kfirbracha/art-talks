@@ -3,4 +3,5 @@ export interface Iimage {
   imageName: string;
   imageDesc: string;
   url: string;
+  _id: string;
 }

@@ -5,10 +5,14 @@ import { BaseCardComponent } from './components/base-card/base-card.component';
 import { MaterialCardComponent } from './components/material-card/material-card.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FormsModule } from '@angular/forms';
-import { ApiService } from './services/api-service/api.service';
+import { GlobalErrorComponent } from './components/global-error/global-error.component';
 
 const modules = [MaterialModule, FormsModule];
-const components = [BaseCardComponent, MaterialCardComponent];
+const components = [
+  BaseCardComponent,
+  MaterialCardComponent,
+  GlobalErrorComponent,
+];
 const pipes = [FilterPipe];
 @NgModule({
   declarations: [...components, ...pipes],

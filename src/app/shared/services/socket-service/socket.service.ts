@@ -15,16 +15,13 @@ export class WebSocketService {
   ) {}
 
   sendMessage(msg: any) {
-    console.log({ msg });
-
     this.socket.emit('message', msg);
   }
   close() {
     this.socket.disconnect();
   }
 
-  public send(msg: any) {
-    console.log(msg);
-    this.sendMessage({ msg, ...this.galleryService.choosenImage.value });
+  public send(payload: any) {
+    this.sendMessage(payload);
   }
 }

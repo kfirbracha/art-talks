@@ -10,9 +10,24 @@
   </app-base-card>
   <div class="chat-container">
     <div class="chat-view">
-      <p *ngFor="let msg of messages">
-        {{ msg }}
-      </p>
+      <div
+        *ngFor="let msg of messages"
+        class="bubble"
+        [ngClass]="{ 'is-from-user': msg.user_id._id !== userId }"
+      >
+        <div class="txt">
+          <p class="name alt">
+            {{ msg.user_id.userName }}
+          </p>
+          <p class="message">
+            {{ msg.msg }}
+          </p>
+        </div>
+        <div
+          class="bubble-arrow"
+          [ngClass]="{ alt: msg.user_id._id === userId }"
+        ></div>
+      </div>
     </div>
     <mat-form-field class="chat-input" appearance="outline">
       <mat-label>quick search</mat-label>

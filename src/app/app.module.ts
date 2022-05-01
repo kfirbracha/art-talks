@@ -9,10 +9,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { GalleryComponent } from './gallery/gallery.component';
 import { ArtWorkComponent } from './art-work/art-work.component';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 @NgModule({
-  declarations: [AppComponent, GalleryComponent, ArtWorkComponent],
+  declarations: [
+    AppComponent,
+    GalleryComponent,
+    ArtWorkComponent,
+    LoginComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,6 +27,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     BrowserAnimationsModule,
     HttpClientModule,
     SocketIoModule.forRoot(config),
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

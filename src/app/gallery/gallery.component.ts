@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Iimage } from 'src/assets/interfaces/image';
 import { Routes } from '../shared/enums/routes';
 import { ApiService } from '../shared/services/api-service/api.service';
@@ -14,7 +15,7 @@ import {
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss'],
 })
-export class GalleryComponent implements OnInit {
+export class GalleryComponent implements OnInit, OnDestroy {
   keywords = '';
   arr: Iimage[] = [];
   constructor(
@@ -23,20 +24,20 @@ export class GalleryComponent implements OnInit {
     private router: Router,
     private apiService: ApiService
   ) {}
-
+  subscription: Subscription = new Subscription();
   ngOnInit(): void {
-    this.apiService.getImagesArr().subscribe((res) => {
-      console.log({ res });
-      this.arr = res;
-    });
-    console.log('init');
+    this.subscription.add(
+      this.galleryService.imageArr.subscribe((res) => (this.arr = res || []))
+    );
   }
 
   onCardClick(image: Iimage) {
-    console.log(image);
-
     this.galleryService.choosenImage.next(image);
-    this.sessionService.setSession(SessionKeys.image, image);
+    this.sessionService.setSession(SessionKeys.image, { _id: image._id });
     this.router.navigate([`${Routes.ArtWork}/${image.imageName}`]);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
